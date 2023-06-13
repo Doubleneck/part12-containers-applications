@@ -1,0 +1,19 @@
+Script started on Tue Jun 13 13:53:16 2023
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Anttis-Mac-mini.local/Users/anttivuorenmaa/Desktop/part12-containers-applications[0m[27m[24m[Janttivuorenmaa@Anttis-Mac-mini part12-containers-applications % [K[?2004h[7mdocker container[7m [7mrun -it ubuntu bash[27m[K[A[44C[27md[27mo[27mc[27mk[27me[27mr[27m [27mc[27mo[27mn[27mt[27ma[27mi[27mn[27me[27mr [27mr[27mu[27mn[27m [27m-[27mi[27mt[27m [27mu[27mb[27mu[27mn[27mt[27mu[27m [27mb[27ma[27ms[27mh[?2004l
+[?2004h]0;root@fa82826553b9: /root@fa82826553b9:/# cd usr
+[?2004l[?2004h]0;root@fa82826553b9: /usrroot@fa82826553b9:/usr# cd src
+[?2004l[?2004h]0;root@fa82826553b9: /usr/srcroot@fa82826553b9:/usr/src# mkdir app
+[?2004l[?2004h]0;root@fa82826553b9: /usr/srcroot@fa82826553b9:/usr/src# cd app
+[?2004l[?2004h]0;root@fa82826553b9: /usr/src/approot@fa82826553b9:/usr/src/app# r touch index.js
+[?2004l[?2004h]0;root@fa82826553b9: /usr/src/approot@fa82826553b9:/usr/src/app# ls
+[?2004lindex.js
+[?2004h]0;root@fa82826553b9: /usr/src/approot@fa82826553b9:/usr/src/app# exit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]7;file://Anttis-Mac-mini.local/Users/anttivuorenmaa/Desktop/part12-containers-applications[0m[27m[24m[Janttivuorenmaa@Anttis-Mac-mini part12-containers-applications % [K[?2004heexit[?2004l
+
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+
+Script done on Tue Jun 13 13:55:18 2023
