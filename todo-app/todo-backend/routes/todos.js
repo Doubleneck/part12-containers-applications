@@ -17,13 +17,6 @@ router.post('/', async (req, res) => {
   res.send(todo)
 })
 
-/* GET todo. */
-//router.get('/:id', async (req, res) => {
-//  const { id } = req.params
-//  req.todo = await Todo.findById(id)
-//  res.send(req.todo)
-//res.sendStatus(405) // Implement this
-//})
 const singleRouter = express.Router()
 
 const findByIdMiddleware = async (req, res, next) => {
