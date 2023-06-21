@@ -1,4 +1,4 @@
-const Todo = (todo, onClickDelete, onClickComplete) => {
+const Todo = ({todo, onClickDelete, onClickComplete}) => {
   const doneInfo = (
     <>
       <span>This todo is done</span>
@@ -18,14 +18,14 @@ const Todo = (todo, onClickDelete, onClickComplete) => {
     </>
   )
   return (
-    <div>
+    <div
       style=
       {{
         display: 'flex',
         justifyContent: 'space-between',
         maxWidth: '70%',
         margin: 'auto',
-      }}
+      }} >
       <span>{todo.text}</span>
       {todo.done ? doneInfo : notDoneInfo}
     </div>
