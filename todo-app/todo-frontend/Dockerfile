@@ -9,6 +9,7 @@ RUN npm install
 
 ENV REACT_APP_BACKEND_URL=http://localhost:3000
 RUN npm run build
+RUN CI=true npm test
 
 
 
