@@ -9,7 +9,6 @@ test('renders content', () => {
     done: true
   }
 
-
   render(
     <Todo
       todo={todo}
