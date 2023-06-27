@@ -60,3 +60,7 @@ typings/
 
 # next.js build output
 .next
+
+# data folders
+mongo_data/
+redis_data/
