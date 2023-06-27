@@ -21,7 +21,7 @@ services:
       - ./redis_data:/data
     container_name: todo-redis   
 
-  server:
+  backend_dev:
     build:
       context: . # This will simply tell which folder to read
       dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read

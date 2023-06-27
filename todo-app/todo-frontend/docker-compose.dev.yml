@@ -1,5 +1,7 @@
+version: '3.8'
+
 services:
-  app:
+  frontend_dev:
     image: front-dev
     build:
       dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
@@ -7,4 +9,6 @@ services:
       - ./:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
     ports:
       - 3001:3000
+    environment: 
+      - REACT_APP_BACKEND_URL=http://localhost:3000 # This will be used in the .env file
     container_name: front-dev # This will name the container front-dev
