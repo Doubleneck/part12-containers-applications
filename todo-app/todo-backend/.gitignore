@@ -63,4 +63,4 @@ typings/
 
 # data folders
 mongo_data/
-redis_data/
+redis_data/*

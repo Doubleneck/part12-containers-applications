@@ -1,20 +1,33 @@
-FROM node:16 AS build-stage
+#FROM node:16
+
+#WORKDIR /usr/src/todo_frontend_production
+
+#COPY . .
+
+#ENV REACT_APP_BACKEND_URL=http://localhost:8080/api
+
+#RUN npm ci
+
+#RUN CI=true npm run test
+
+#RUN npm run build
+
+#RUN npm install -g serve
+
+#CMD ["serve", "build"]
+
+FROM node:16
 
 WORKDIR /usr/src/app
 
 COPY . .
-ENV REACT_APP_BACKEND_URL=http://localhost:3000
+
 # Change npm ci to npm install since we are going to be in development mode
 RUN npm install
 
+ENV REACT_APP_BACKEND_URL=http://localhost:8080/api
 
-RUN npm run build
-RUN CI=true npm test
+# npm start is the command to start the application in development mode
+CMD ["npm", "start"]
 
-
-
-FROM nginx:1.20-alpine
-# COPY the directory build from build-stage to /usr/share/nginx/html
-# The target location here was found from the Docker hub page
-COPY --from=build-stage /usr/src/app/build /usr/share/nginx/html
 
