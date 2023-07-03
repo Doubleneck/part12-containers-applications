@@ -11,4 +11,4 @@ db.createUser({
 
   
   db.people.insert({ name: 'Aku ankka', number: '040-313313' });
-  db.people.insert({ text: 'Donald Trump', number: '000-0000000' });
+  db.people.insert({ name: 'Donald Trump', number: '000-0000000' });

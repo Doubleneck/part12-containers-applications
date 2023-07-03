@@ -1,6 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
-//const cors = require('cors') 
+const cors = require('cors') 
 const app = express()
 
 const Person = require('./models/person')
@@ -17,7 +17,7 @@ const requestLogger = (request, response, next) => {
 }
 app.use(requestLogger)
 
-//app.use(cors)
+app.use(cors())
 app.use(morgan(':method :url :status :response-time ms :person'),)
 
 

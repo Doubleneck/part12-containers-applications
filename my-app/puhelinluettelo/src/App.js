@@ -19,7 +19,7 @@ const App = () => {
       })
   }, [])
 
-  console.log('render', persons.length, 'notes')
+  //console.log(persons)
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -89,7 +89,9 @@ const App = () => {
       })
     } 
   }
+ 
   const personNames = persons.map(person => person.name)
+  
   const personsToShow = showAll
     ? persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
     : persons
@@ -186,5 +188,6 @@ const ErrorNotification = ({ message }) => {
     </div>
   )
 }
+
 
 export default App
