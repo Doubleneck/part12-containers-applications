@@ -19,8 +19,6 @@ const App = () => {
       })
   }, [])
 
-  //console.log(persons)
-
   const addPerson = (event) => {
     event.preventDefault()
     const personObject = {
@@ -95,7 +93,6 @@ const App = () => {
   const personsToShow = showAll
     ? persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
     : persons
-    // console.log(persons.filter(person => person.name.includes(newFilter.toLowerCase())))
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -188,6 +185,5 @@ const ErrorNotification = ({ message }) => {
     </div>
   )
 }
-
 
 export default App

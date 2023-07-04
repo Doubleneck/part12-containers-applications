@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  
+
+  mongo_db_dev:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes: 
+      - ./puhelinluettelo_backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./puhelinluettelo_backend/mongo/mongo_data:/data/db
+    container_name: puhelinluettelo-mongo-dev 
+
+  backend_dev_nginx:
+    image: puhelinluettelo-backend-dev # This will be the name of the image
+    build:
+      context: ./puhelinluettelo_backend # This will tell where the Dockerfile is located
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    ports:
+      - 3001:3001
+    environment:   
+      - MONGODB_URI=mongodb://the_username:the_password@mongo_db_dev:27017/the_database 
+    depends_on:
+      - mongo_db_dev
+    container_name: puhelinluettelo-back-dev # This will name the container back-dev
+
+  frontend_dev_nginx:
+    image: puhelinluettelo-frontend-dev # This will be the name of the image
+    build:
+      context: ./puhelinluettelo
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    ports:
+      - 3000:3000
+    environment:
+      - BACKEND_URI=http://puhelinluettelo-back-dev:3001/api/persons/
+    depends_on:
+      - backend_dev_nginx
+    container_name: puhelinluettelo-front-dev # This will name the container front-dev
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - backend_dev_nginx # wait for the frontend container to be started
+      - frontend_dev_nginx
+
+volumes:
+  mongo_data:

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend_dev:
+    image: puhelinluettelo-frontend-dev # This will be the name of the image
+    build:
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+    ports:
+      - 3000:3000
+    container_name: puhelinluettelo-front-dev # This will name the container front-dev
