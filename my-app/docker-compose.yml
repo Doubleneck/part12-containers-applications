@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:  
+
+  mongo_db_prod:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes: 
+      - ./puhelinluettelo_backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./puhelinluettelo_backend/mongo/mongo_data_prod:/data/db
+    container_name: puhelinluettelo-mongo-prod 
+
+  backend_prod_nginx:
+    image: puhelinluettelo-backend-prod 
+    build:
+      context: ./puhelinluettelo_backend 
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo_db_prod
+    container_name: puhelinluettelo-back-prod 
+
+  frontend_prod_nginx:
+    image: puhelinluettelo-frontend-prod 
+    build:
+      context: ./puhelinluettelo
+      dockerfile: Dockerfile 
+    depends_on:
+      - backend_prod_nginx
+    container_name: puhelinluettelo-front-prod 
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - backend_prod_nginx 
+      - frontend_prod_nginx
+
+volumes:
+  mongo_data_prod:

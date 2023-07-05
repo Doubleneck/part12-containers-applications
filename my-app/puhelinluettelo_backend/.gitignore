@@ -2,3 +2,4 @@ node_modules
 .env
 
 /mongo/mongo_data/
+/mongo/mongo_data_prod/
